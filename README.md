@@ -4,7 +4,7 @@
 A detailed guide to the responsibilities and tasks of a DevOps Engineer, with in-depth descriptions and real-world examples.
 
 ## Table of Contents
-1. [CI/CD Pipeline Management with Argo CD Integration](#CI/CD-Pipeline-Management-with-Argo-CD-Integration)
+1. [CI/CD Pipeline Management with Argo CD Integration](#cicd-Pipeline-Management-with-Argo-CD-Integration)
 2. [Infrastructure and Configuration Management](#infrastructure-and-configuration-management)
 3. [Continuous Integration and Deployment Enhancements](#continuous-integration-and-deployment-enhancements)
 4. [Cloud Management](#cloud-management)
