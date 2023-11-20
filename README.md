@@ -4,7 +4,7 @@
 A detailed guide to the responsibilities and tasks of a DevOps Engineer, with in-depth descriptions and real-world examples.
 
 ## Table of Contents
-1. [CI/CD Pipeline Management](#cicd-pipeline-management)
+1. [CI/CD Pipeline Management with Argo CD Integration(#CI/CD-Pipeline-Management-with-Argo-CD-Integration)
 2. [Infrastructure and Configuration Management](#infrastructure-and-configuration-management)
 3. [Continuous Integration and Deployment Enhancements](#continuous-integration-and-deployment-enhancements)
 4. [Cloud Management](#cloud-management)
@@ -102,37 +102,18 @@ A detailed guide to the responsibilities and tasks of a DevOps Engineer, with in
   8. **Continuous Deployment with Argo CD**
      - Argo CD automatically detects changes in the deployment repository and deploys the latest version to the Kubernetes cluster.
 
-  ### Ensuring Consistency
+  ### Ensuring Consistency and Security
   - Use Argo CD's declarative setup to ensure consistency between the Git repository and the deployed state in Kubernetes.
   - Regularly monitor Argo CD for deployment status and potential discrepancies.
   - Configure Argo CD sync policies to automate deployment and recovery processes.
-
-  ### Notes
   - Ensure the security of the Argo CD server and its access to your Git repositories.
   - Keep the deployment repository updated with all changes to track and manage deployments effectively.
   - Regularly update and maintain Argo CD to leverage the latest features and security patches.
-
-
-  2. **GitHub Webhook Configuration**
-     - Configure a webhook in your GitHub repository to trigger the Jenkins pipeline on new commits.
-     - URL for webhook: `http://[JENKINS_URL]/github-webhook/`
-     - Trigger: Just the `push` event.
-
-  3. **Jenkins Configuration**
-     - Set up a new Jenkins job linked to the GitHub repository.
-     - Select 'Pipeline' as the job type.
-     - In the pipeline section, choose 'Pipeline script from SCM'.
-     - Set SCM to 'Git' and provide the repository URL.
-     - Enter the path to your Jenkinsfile.
-
-  4. **Deployment Script**
-     - The deployment script in the 'Deploy' stage should handle the deployment to the staging environment.
-     - This could involve SSH commands, Kubernetes deployment scripts, etc.
-
-  ### Notes
   - Ensure Jenkins has appropriate permissions to access the GitHub repository.
   - Configure necessary credentials in Jenkins for deployment.
   - Test the pipeline thoroughly to ensure each stage works as expected.
+
+
 
 ## Infrastructure and Configuration Management
 - **Task**: Writing Infrastructure as Code (IaC) using Terraform or AWS CloudFormation and managing configurations with Ansible, Chef, or Puppet.
