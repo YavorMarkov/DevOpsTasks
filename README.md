@@ -30,7 +30,59 @@ A detailed guide to the responsibilities and tasks of a DevOps Engineer, with in
 ## CI/CD Pipeline Management
 - **Task**: Implementing and modifying CI/CD pipelines using tools like Jenkins, CircleCI, or GitLab CI.
 - **Description**: This involves setting up pipelines that automate the process of software delivery and deployment. This includes writing scripts for build, test, and deployment stages, integrating with version control systems, and ensuring the pipeline supports various development environments. Regular updates and optimizations are made to these pipelines to adapt to changing project requirements or to incorporate new technologies and methodologies.
-- **Example**: In a project using GitHub, setting up a Jenkins pipeline that automatically triggers a build and test sequence whenever new commits are pushed. This pipeline also deploys the application to a staging environment upon successful completion of tests.
+- **Example**: Setting up a Jenkins pipeline in a project using GitHub. This pipeline automatically triggers a build and test sequence whenever new commits are pushed and deploys the application to a staging environment upon successful completion of tests.
+
+  ### Jenkins Pipeline Setup
+  1. **Jenkinsfile (Pipeline Script)**
+     - This script defines the stages of the pipeline: build, test, and deploy.
+     ```groovy
+     pipeline {
+         agent any
+         stages {
+             stage('Build') {
+                 steps {
+                     echo 'Building...'
+                     // Add build commands here
+                 }
+             }
+             stage('Test') {
+                 steps {
+                     echo 'Testing...'
+                     // Add test commands here
+                 }
+             }
+             stage('Deploy') {
+                 when {
+                     branch 'main'
+                 }
+                 steps {
+                     echo 'Deploying to staging...'
+                     // Add deployment commands here
+                 }
+             }
+         }
+     }
+     ```
+  2. **GitHub Webhook Configuration**
+     - Configure a webhook in your GitHub repository to trigger the Jenkins pipeline on new commits.
+     - URL for webhook: `http://[JENKINS_URL]/github-webhook/`
+     - Trigger: Just the `push` event.
+
+  3. **Jenkins Configuration**
+     - Set up a new Jenkins job linked to the GitHub repository.
+     - Select 'Pipeline' as the job type.
+     - In the pipeline section, choose 'Pipeline script from SCM'.
+     - Set SCM to 'Git' and provide the repository URL.
+     - Enter the path to your Jenkinsfile.
+
+  4. **Deployment Script**
+     - The deployment script in the 'Deploy' stage should handle the deployment to the staging environment.
+     - This could involve SSH commands, Kubernetes deployment scripts, etc.
+
+  ### Notes
+  - Ensure Jenkins has appropriate permissions to access the GitHub repository.
+  - Configure necessary credentials in Jenkins for deployment.
+  - Test the pipeline thoroughly to ensure each stage works as expected.
 
 ## Infrastructure and Configuration Management
 - **Task**: Writing Infrastructure as Code (IaC) using Terraform or AWS CloudFormation and managing configurations with Ansible, Chef, or Puppet.
